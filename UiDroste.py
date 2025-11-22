@@ -328,6 +328,8 @@ class DrosteGUI:
         self.root.after(0, lambda: self.display_result(result, display_w, display_h, False))
 
     def display_result(self, result, display_w, display_h, preview):
+        if result is None:
+            return
         resample = Image.Resampling.NEAREST if preview else Image.Resampling.LANCZOS
         if result.size != (display_w, display_h):
             result = result.resize((display_w, display_h), resample)
